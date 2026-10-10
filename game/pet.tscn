@@ -1,0 +1,65 @@
+[gd_scene format=3 uid="uid://k0w1h06s3jaj"]
+
+[ext_resource type="Script" uid="uid://dwdx6sqxema32" path="res://game/pet.gd" id="1_4307x"]
+[ext_resource type="Texture2D" uid="uid://d08xafmqgp707" path="res://assets/2 Owlet_Monster/Owlet_Monster_Walk_6.png" id="3_e7lhq"]
+[ext_resource type="Script" uid="uid://bpw1fvvh6ru0w" path="res://game/animated_sprite_2d.gd" id="5_5rqr2"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vq171"]
+atlas = ExtResource("3_e7lhq")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_e7lhq"]
+atlas = ExtResource("3_e7lhq")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gpnam"]
+atlas = ExtResource("3_e7lhq")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5rqr2"]
+atlas = ExtResource("3_e7lhq")
+region = Rect2(96, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tph6u"]
+atlas = ExtResource("3_e7lhq")
+region = Rect2(128, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_oxate"]
+atlas = ExtResource("3_e7lhq")
+region = Rect2(160, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_g4v7s"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vq171")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_e7lhq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gpnam")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5rqr2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tph6u")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_oxate")
+}],
+"loop": 1,
+"name": &"walk",
+"speed": 5.0
+}]
+
+[node name="Pet" type="CharacterBody2D" unique_id=1570724950]
+scale = Vector2(5.6562505, 5.6562505)
+script = ExtResource("1_4307x")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1111144336]
+sprite_frames = SubResource("SpriteFrames_g4v7s")
+animation = &"walk"
+autoplay = "walk"
+script = ExtResource("5_5rqr2")

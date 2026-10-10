@@ -1,0 +1,60 @@
+[gd_scene format=3 uid="uid://32sgyadcj57o"]
+
+[ext_resource type="Texture2D" uid="uid://dwd8m5v0lx5l0" path="res://assets/2 Owlet_Monster/Owlet_Monster_Run_6.png" id="1_8pse0"]
+[ext_resource type="Script" uid="uid://bpw1fvvh6ru0w" path="res://game/animated_sprite_2d.gd" id="2_6ni6v"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vq171"]
+atlas = ExtResource("1_8pse0")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_e7lhq"]
+atlas = ExtResource("1_8pse0")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gpnam"]
+atlas = ExtResource("1_8pse0")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5rqr2"]
+atlas = ExtResource("1_8pse0")
+region = Rect2(96, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tph6u"]
+atlas = ExtResource("1_8pse0")
+region = Rect2(128, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_oxate"]
+atlas = ExtResource("1_8pse0")
+region = Rect2(160, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_g4v7s"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vq171")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_e7lhq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gpnam")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5rqr2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tph6u")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_oxate")
+}],
+"loop": 1,
+"name": &"walk",
+"speed": 5.0
+}]
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" unique_id=91921747]
+sprite_frames = SubResource("SpriteFrames_g4v7s")
+animation = &"walk"
+autoplay = "walk"
+script = ExtResource("2_6ni6v")

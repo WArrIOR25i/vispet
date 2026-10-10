@@ -1,0 +1,136 @@
+[gd_scene format=3 uid="uid://bid06exkiy63b"]
+
+[ext_resource type="Script" uid="uid://c2sidy5j5uljg" path="res://game/world.gd" id="1_aseec"]
+[ext_resource type="Script" uid="uid://cvm3bjbdyqa7i" path="res://game/pet_button.gd" id="4_4xpgs"]
+[ext_resource type="Script" uid="uid://vpc6d1tpcdoj" path="res://game/progress_bar.gd" id="4_805w3"]
+[ext_resource type="Texture2D" uid="uid://dhkuxeadcl1g4" path="res://assets/Berry.png" id="6_fhh06"]
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_g4v7s"]
+particle_flag_disable_z = true
+use_rotation_3d = true
+spread = 180.0
+initial_velocity_min = 100.0
+initial_velocity_max = 300.0
+gravity = Vector3(0, 90, 0)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_naw2d"]
+atlas = ExtResource("6_fhh06")
+region = Rect2(0, 0, 574, 1083)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_fhh06"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_naw2d")
+}],
+"loop": 1,
+"name": &"bored",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_naw2d")
+}],
+"loop": 1,
+"name": &"idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_naw2d")
+}],
+"loop": 1,
+"name": &"sleep",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_naw2d")
+}],
+"loop": 1,
+"name": &"walk",
+"speed": 5.0
+}]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_g4v7s"]
+bg_color = Color(0.11764706, 0.11764706, 0.11764706, 1)
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+shadow_size = 4
+
+[node name="World" type="Node2D" unique_id=404036902]
+script = ExtResource("1_aseec")
+
+[node name="ProgressBar" type="ProgressBar" parent="." unique_id=851349524 node_paths=PackedStringArray("particles")]
+self_modulate = Color(1, 0.31764707, 1, 1)
+offset_left = 305.0
+offset_top = 262.0
+offset_right = 374.0
+offset_bottom = 501.0
+fill_mode = 3
+show_percentage = false
+script = ExtResource("4_805w3")
+step_amount = 0.1
+particles = NodePath("GPUParticles2D")
+
+[node name="GPUParticles2D" type="GPUParticles2D" parent="ProgressBar" unique_id=887325422]
+position = Vector2(35, 1)
+emitting = false
+amount = 30
+one_shot = true
+explosiveness = 1.0
+randomness = 1.0
+collision_base_size = 2.0
+process_material = SubResource("ParticleProcessMaterial_g4v7s")
+
+[node name="Pet_button" type="TextureButton" parent="." unique_id=1843314218]
+offset_left = 180.0
+offset_top = 265.0
+offset_right = 334.0
+offset_bottom = 510.0
+script = ExtResource("4_4xpgs")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1641602181]
+position = Vector2(243, 391)
+scale = Vector2(0.21264714, 0.2090527)
+sprite_frames = SubResource("SpriteFrames_fhh06")
+animation = &"bored"
+autoplay = "walk"
+
+[node name="PanelContainer" type="PanelContainer" parent="AnimatedSprite2D" unique_id=209228295]
+visible = false
+modulate = Color(0.012617188, 0.012617188, 0.012617188, 1)
+offset_left = 286.86014
+offset_top = -631.41986
+offset_right = 545.5044
+offset_bottom = 574.01825
+
+[node name="SpeechBubble" type="PanelContainer" parent="." unique_id=1491250327]
+custom_minimum_size = Vector2(20, 20)
+propagate_maximum_size = false
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = 2.0
+offset_top = 37.0
+offset_right = 506.0
+offset_bottom = 99.0
+grow_horizontal = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_g4v7s")
+
+[node name="MarginContainer" type="MarginContainer" parent="SpeechBubble" unique_id=173063700]
+layout_mode = 2
+theme_override_constants/margin_left = 6
+theme_override_constants/margin_top = 6
+theme_override_constants/margin_right = 6
+theme_override_constants/margin_bottom = 6
+
+[node name="Label" type="Label" parent="SpeechBubble/MarginContainer" unique_id=1044235372]
+layout_mode = 2
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 3
+
+[connection signal="filled" from="ProgressBar" to="ProgressBar" method="_on_filled"]

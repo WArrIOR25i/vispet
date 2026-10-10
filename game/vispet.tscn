@@ -1,0 +1,8 @@
+[gd_scene format=3 uid="uid://brmo52arw8bdv"]
+
+[ext_resource type="PackedScene" uid="uid://k0w1h06s3jaj" path="res://game/pet.tscn" id="1_m743p"]
+
+[node name="Vispet" type="Node2D" unique_id=345779192]
+
+[node name="Pet" parent="." unique_id=1570724950 instance=ExtResource("1_m743p")]
+scale = Vector2(3, 3)
